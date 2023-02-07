@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 # ---------------------------------------------------------------------------------------------------------------------
 # Mongoid defines it's own ::Boolean class, and silently break coercer.
 # See: /mongoid-7.2.0/lib/mongoid/criteria/queryable/extensions.rb
@@ -12,7 +11,7 @@
 # Given we do not use mongoid's Boolean lets define it before the mongoid and inherit it from virtus one.
 # Otherwise it breaks all the `attribute :attr_name, Boolean` calls in `decidim` gem (and there are A LOT of them)
 unless defined?(Boolean)
-  class Boolean < Virtus::Attribute::Boolean; end
+  class Boolean < ActiveModel::Type::Boolean; end
 end
 require "mongoid"
 # ---------------------------------------------------------------------------------------------------------------------

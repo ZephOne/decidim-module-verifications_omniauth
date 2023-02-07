@@ -23,8 +23,8 @@ module Decidim
 
     encrypt_attribute :verification_metadata, type: :hash
 
-    validates_upload :verification_attachment
-    mount_uploader :verification_attachment, Decidim::Verifications::AttachmentUploader
+    has_one_attached :verification_attachment
+    validates_upload :verification_attachment uploader Decidim::Verifications::AttachmentUploader
 
     belongs_to :user, foreign_key: "decidim_user_id", class_name: "Decidim::User"
     has_one :organization, through: :user, class_name: "Decidim::Organization"
