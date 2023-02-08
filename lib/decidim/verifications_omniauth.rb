@@ -11,6 +11,8 @@
 #
 # Given we do not use mongoid's Boolean lets define it before the mongoid and inherit it from virtus one.
 # Otherwise it breaks all the `attribute :attr_name, Boolean` calls in `decidim` gem (and there are A LOT of them)
+require "virtus"
+
 unless defined?(Boolean)
   class Boolean < Virtus::Attribute::Boolean; end
 end
